@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jar of Little Things 💗</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="#home">♡ Jar of Little Things</a>
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#jar">Pick a Note</a>
+            <a href="#categories">Categories</a>
+            <a href="#memories">View Memories 🔐</a>
+            <a href="#letter">A Little Letter</a>
+        </nav>
+        <button id="musicToggle" class="music-button" type="button">🎵 Play Music</button>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="welcome-art" aria-label="Illustration of a jar filled with colorful notes">
+                <div class="jar">
+                    <div class="jar-lid"></div>
+                    <div class="jar-neck"></div>
+                    <div class="jar-body">
+                        <div class="paper paper-one">HI!</div>
+                        <div class="paper paper-two">♡</div>
+                        <div class="paper paper-three">SMILE</div>
+                        <div class="paper paper-four">✿</div>
+                        <div class="paper paper-five">☺</div>
+                        <div class="paper paper-six">YAY!</div>
+                    </div>
+                    <div class="jar-ribbon">♡</div>
+                </div>
+                <p class="tiny-caption">A little jar filled with little things.</p>
+            </div>
+
+            <div class="hero-text">
+                <p class="eyebrow">A LITTLE PLACE JUST FOR US</p>
+                <h1>Jar of Little Things</h1>
+                <p>A tiny corner of the internet filled with reminders, happy thoughts, silly moments, and all the little things worth keeping.</p>
+                <a class="primary-button" href="#jar">Pick a little note 💌</a>
+                <p class="small-text">Whenever you need a smile, there's a little something here for you.</p>
+            </div>
+        </section>
+
+        <section id="jar" class="section">
+            <p class="eyebrow">A NOTE JUST FOR YOU</p>
+            <h2>Pick Something From the Jar</h2>
+            <p class="section-description">Choose a little note and see what the jar has for you today. ♡</p>
+            <div class="jar-area">
+                <div class="mini-jar" aria-hidden="true">🫙</div>
+                <button id="pickNote" class="primary-button" type="button">Pick a Random Note ✨</button>
+                <div id="noteCard" class="note-card hidden" aria-live="polite">
+                    <p id="noteCategory" class="eyebrow">A LITTLE REMINDER</p>
+                    <p id="noteMessage" class="note-message"></p>
+                    <button id="anotherNote" class="secondary-button" type="button">Another little note 💗</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="categories" class="section">
+            <p class="eyebrow">PICK WHAT YOU NEED TODAY</p>
+            <h2>Little Things for Every Feeling</h2>
+            <p class="section-description">A note for a happy day, a difficult day, or simply because. 💕</p>
+            <div class="category-grid">
+                <button class="category-card pink" data-category="appreciation" type="button"><span>💗</span><strong>Appreciation</strong><p>For when you need to feel valued.</p></button>
+                <button class="category-card yellow" data-category="reminder" type="button"><span>🌼</span><strong>Little Reminders</strong><p>Small things worth remembering.</p></button>
+                <button class="category-card purple" data-category="funny" type="button"><span>😂</span><strong>Silly Things</strong><p>For a little laugh.</p></button>
+                <button class="category-card green" data-category="comfort" type="button"><span>🫶</span><strong>Comfort</strong><p>For days that feel a bit heavy.</p></button>
+                <button class="category-card blue" data-category="memory" type="button"><span>📸</span><strong>Memories</strong><p>Little moments we treasure.</p></button>
+                <button class="category-card peach" data-category="heartfelt" type="button"><span>💌</span><strong>From the Heart</strong><p>Words I hope you keep close.</p></button>
+            </div>
+        </section>
+
+        <!-- PASSWORD-PROTECTED MEMORIES: photos and videos stay hidden until the password is entered. -->
+        <section id="memories" class="section">
+            <p class="eyebrow">JUST BETWEEN US ♡</p>
+            <h2>Our Little Memory Box 🔐</h2>
+            <p class="section-description">Some memories are extra special. Enter our little password to unlock this private corner. 💗</p>
+
+            <div class="memory-lock-card" id="memoryLockCard">
+                <div class="lock-illustration" aria-hidden="true">🗝️💌</div>
+                <h3>Only for us</h3>
+                <p>There's something sweet waiting inside. Type the password to view our photos and videos.</p>
+                <form id="memoryPasswordForm" class="memory-password-form">
+                    <label for="memoryPassword">Our password</label>
+                    <div class="password-input-row">
+                        <input id="memoryPassword" name="memoryPassword" type="password" placeholder="Enter the password..." autocomplete="off" required>
+                        <button class="primary-button" type="submit">Unlock ♡</button>
+                    </div>
+                    <p id="passwordMessage" class="password-message" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <div id="unlockedMemories" class="unlocked-memories hidden" aria-live="polite">
+                <div class="unlocked-heading">
+                    <span>🔓</span>
+                    <div>
+                        <h3>Our Memories 📸</h3>
+                        <p>Little moments, big memories. I'm glad we have these. 💗</p>
+                    </div>
+                    <button id="lockMemories" class="secondary-button" type="button">Lock again 🔒</button>
+                </div>
+                <div class="memory-grid">
+                    <article class="memory-card">
+                        <img src="memories/photo1.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 Unforgettable Memory</span><p>One of my favorite memories with you. Because this is our first ever photobooth together.</p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo2.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Jollibee Moments </span><p>Some moments are too special to forget.</p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo3.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 Laptop Selfie at Little Tea</span><p>So happy to be together again! Sometimes, the simplest moments become the sweetest memories. Just us, taking random selfies, sharing little laughs, and enjoying each others company. It feels so good to catch up and make new memories together. Here's to more little moments with people who make ordinary days feel so special.</p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo4.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Another Photobooth Memory</span><p>
+                            Same photobooth, different pictures, but the same happiness of being together.  Just another little memory to keep, reminding us that even the simplest moments become special when shared with the right people. Here's to more pictures, more laughter, and more memories together! 
+                        </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo5.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 Our Photobooth Collection </span><p>A little collection of our favorite moments, one photobooth strip at a time.  Different poses, different pictures, but each one holds a memory worth keeping. Someday, we'll look back at these photos and remember the laughter, the happiness, and the little moments that made us smile. Here's to adding more strips to our collection and making more memories together. </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo6.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Quick Mirror Selfie</span><p>Just a quick mirror selfie to capture another little moment together. Nothing fancy, just us being us and making memories out of the simplest things. It's always the little moments that end up meaning so much, especially when you get to spend them with people you don't see every day. Here's to more random selfies and days like this. </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo7.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 Another Copy of Our Photobooth Memories 📸🤍</span><p>Keeping this little memory in another frame, because some moments are just too precious not to save. </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo8.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Mirror Shot with Ash</span><p>
+                            Our student gave us a cap, and of course, we couldn't just leave without taking a picture with it!  A little unexpected gift turned into another cute memory to keep. It's always the small, thoughtful things that make an ordinary day a little more special. 
+                        </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo9.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 Our First-Ever Morning Jog</span><p>Our first morning jog together, and hopefully, the first of many more!  It's not just about getting up early and being active, but also about trying new things together, sharing little moments, and creating memories outside our usual routine. A simple morning, a little movement, and good company to make it even better. Here's to more mornings, more adventures, and more memories together! </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo10.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Pretty Kharmee</span><p>A little appreciation post for our pretty Kharmee!  Some people just make every moment brighter simply by being themselves, and she's definitely one of them. Pretty inside and out, and someone who makes our memories even more special. </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo11.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 Pretty Ash</span><p>A little appreciation post for our pretty Ash!  One of those lovely faces that make our little memories even more special. So grateful for the laughs, the random pictures, and all the little moments we get to share together. Pretty girl, prettier memories with her. </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo12.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Jollibee with the Girls</span><p>A cute little moment with our girls and Jollibee!  Just a simple picture, but one more memory to add to our collection. It's always the little things, the random laughs, and the people beside us that make ordinary days unforgettable. </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo13.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 Another Snap from Our Photobooth Collection </span><p>Another picture, another little memory to keep.  These photobooth moments may seem simple now, but someday, they'll remind us of the fun, the laughter, and the happiness of being together. One more photo to treasure, and hopefully, many more memories to come. </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo14.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Another Selfie Pose during our Photobooth</span><p>Of course, we need to take  a lot of pictures with different poses. </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo15.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 Another Selfie at Jollibeee</span><p>Same place, just a different pose. HAHAHA, of course, we had to take another one! </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo16.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Selfie with Ash ft. Basem's Cap</span><p>Basem's cap made another appearance HAHHAHAH. Of course, we had to take another selfie with different pose. </p></div>
+                    </article>
+                      </article>
+                    <article class="memory-card">
+                        <img src="memories/photo17.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷  Us and Our Photobooth Memories</span><p>Holding our little memories in our hands.  Just a few pictures, but so many moments to look back on. Definitely adding these to our collection!  </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo18.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 A Little Flower Surprise from Kharmee</span><p>Kharmee surprised us with flowers, and it was honestly such a sweet little gesture. 
+                            It's always the unexpected things that make a day more special. Thank you, Kharmee, for making us feel loved and for giving us another cute memory to look back on. It's not always about how big a gift is, but the thought and love behind it. We appreciate you so much!</p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo19.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Another Pose inside the Photobooth</span><p>Because one pose is never enough. 
+                            HHAHAHA. Just adding another pose to this collection. Same people, more silly poses, and more memories to keep.</p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo20.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 A Little Tea from Kharmee</span><p>A little treat from Kharmee on the same day she surprised us with flowers.  Such a sweet day filled with thoughtful little surprises. Thank you, Kharmee, for making an ordinary day feel extra special. We appreciate these little gestures more than you know! </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo21.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Selfie with K at out School</span><p>This is actually intrams day, we just went there and have attedance and went back home. HAHHAHAH</p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo22.jpeg" alt="Our first memory" class="memory-photo" data-caption="A little moment" loading="lazy">
+                        <div class="memory-caption"><span>💕 Picture with flower and phone keychain from Kharmee</span><p>Awee. So touching to received these things.</p></div>
+                    </article>
+                    <article class="memory-card">
+                        <img src="memories/photo23.jpeg" alt="A happy day together" class="memory-photo" data-caption="Our happy days" loading="lazy">
+                        <div class="memory-caption"><span>🌷 Of Course, Me</span><p>And of course, here's a little picture of mee too. HAHHAHA. Gotta add myself to this cutie website.</p></div>
+                    </article>
+                    <article class="memory-card">
+                        <video controls preload="metadata" class="memory-video" aria-label="Memory video one">
+                            <source src="memories/video1.m4v" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+                        <div class="memory-caption"><span>🎥 Our First Sunrise Together</span><p>A little video to remember this day.
+                            A simple, soothing morning that became one of our most memorable moments. We shared our confessions, let out all the things we had been keeping in our hearts, and talked about the feelings we couldn't easily put into words. It was a morning filled with honesty, vulnerability, and comfort, a moment where we could finally let our guard down and just be ourselves.
+
+As we watched the sunrise, we found peace in knowing that we had someone willing to listen and understand. It wasn't about finding solutions to everything, but about letting our hearts breathe and realizing that we didn't have to carry everything alone. A beautiful sunrise, heartfelt conversations, and a memory we will always hold close to our hearts.
+                        </p></div>
+                    </article>
+                    <article class="memory-card">
+                        <video controls preload="metadata" class="memory-video" aria-label="Memory video two">
+                            <source src="memories/video2.m4v" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+                        <div class="memory-caption"><span>🥹 Tiktok Together</span><p>Of course, we had to make TikToks together! Just us being silly, laughing at our little mistakes, and trying to get the perfect take. It's always fun doing the most random things together, turning ordinary moments into memories we'll look back on someday. Sometimes, it's not even about the videos themselves, but the laughter and happiness we share while making them. Just another little memory to add to our collection.</p></div>
+                    </article>
+                     <article class="memory-card">
+                        <video controls preload="metadata" class="memory-video" aria-label="Memory video two">
+                            <source src="memories/video3.m4v" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+                        <div class="memory-caption"><span>🥹 A Little Piece of Our Sunrise</span><p>A little video of a morning I wish we could relive. The peaceful sky, the soft morning light, and the feeling of finally letting everything out while being with each other. It's more than just a sunrise video; it's a reminder of a morning filled with honest conversations, comfort, and memories that will always mean something to us. Some moments are too precious to leave only in our memories, so here's a little piece of that morning we can always come back to.</p></div>
+                    </article>
+                     <article class="memory-card">
+                        <video controls preload="metadata" class="memory-video" aria-label="Memory video two">
+                            <source src="memories/video4.m4v" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+                        <div class="memory-caption"><span>🥹 Another Tiktok Together</span><p>Because one TikTok is never enough! Just another random video of us being unserious, having fun, and enjoying the moment. It's the little things like these that make our time together even more memorable. Someday, we'll look back at these videos and laugh at how silly we were. Here's to more random TikToks and memories together.</p></div>
+                    </article>
+                    </article>
+                    <article class="memory-card">
+                        <video controls preload="metadata" class="memory-video" aria-label="Memory video two">
+                            <source src="memories/video5.m4v" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+                        <div class="memory-caption"><span>🥹 A Little Aprreciation for Them</span><p>A little video for the people who have made so many ordinary days feel special. I wanted to put these moments together as a small way of showing how much I appreciate them and the memories we've made. From our random pictures and silly TikToks to our heartfelt conversations and quiet mornings, every moment holds a story worth remembering. I'm grateful for the laughter, the comfort, and the chance to share pieces of our lives with one another. This video may only capture a few seconds of our time together, but the memories and feelings behind it mean so much more. I hope we never forget these little moments and how lucky we are to have shared them together.</p></div>
+                    </article>
+                     <article class="memory-card">
+                        <video controls preload="metadata" class="memory-video" aria-label="Memory video two">
+                            <source src="memories/video6.m4v" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+                        <div class="memory-caption"><span>🥹 Another Tiktok HAHHAHAH</span><p>At this point, making TikToks together has become part of our bonding. HAHAHA. Another random video, another set of silly moves, and another memory to look back on. We really can't let a moment pass without turning it into something funny. Just us being ourselves, enjoying the little things, and making the most out of the time we get to spend together. More TikToks, more kalokohan, and more memories with these girls.</p></div>
+                    </article>
+                     <article class="memory-card">
+                        <video controls preload="metadata" class="memory-video" aria-label="Memory video two">
+                            <source src="memories/video7.m4v" type="video/mp4">
+                            Your browser does not support this video.
+                        </video>
+                        <div class="memory-caption"><span>🥹 Random Funny Moment</span><p>One of those random moments that probably makes no sense to anyone else but us. HAHAHA. Sometimes, the funniest memories come from the most unexpected things, and before we know it, we're all laughing over something so unserious. Just another little moment that reminds me how fun it is to be around these girls. It's always the random kalokohan that makes the memories even better.</p></div>
+                    </article>
+                </div>
+                <p class="memory-ending">“One day, these little moments will become our favorite stories.” 💌</p>
+            </div>
+        </section>
+       
+<section id="bouquet" class="section bouquet-section">
+    <p class="eyebrow">A LITTLE SURPRISE FOR YOU 🌷</p>
+    <h2>Choose Your Name</h2>
+    <p>Pick your name to receive a little bouquet made just for you. ♡</p>
+
+    <div class="bouquet-choices">
+        <button class="bouquet-name-card" data-name="Ash">
+            <span>🌸</span>
+            <strong>For Ash</strong>
+            <small>A little pink surprise</small>
+        </button>
+
+        <button class="bouquet-name-card" data-name="Kharmee">
+            <span>🩵</span>
+            <strong>For Kharmee</strong>
+            <small>A little blue surprise</small>
+        </button>
+    </div>
+</section>
+
+<div id="bouquetReveal" class="bouquet-overlay hidden"
+     role="dialog" aria-modal="true">
+
+    <button id="closeBouquet" class="close-bouquet"
+            aria-label="Close bouquet">×</button>
+
+    <div class="bouquet-surprise">
+        <p class="bouquet-eyebrow">A LITTLE GIFT FROM MY HEART</p>
+        <h2 id="bouquetTitle">A Bouquet for You ♡</h2>
+
+        <!-- Same flower design, different colors -->
+        <svg id="flowerBouquet" class="flower-bouquet"
+             viewBox="0 0 400 440" role="img"
+             aria-label="A large hand-drawn flower bouquet">
+
+            <defs>
+                <!-- One layered flower, reused throughout the bouquet -->
+                <g id="rose">
+                    <g stroke="#69405a" stroke-width="1.8">
+                        <ellipse cy="-19" rx="12" ry="23" fill="var(--petal-light)"/>
+                        <ellipse cy="-19" rx="12" ry="23" fill="var(--petal)" transform="rotate(45)"/>
+                        <ellipse cy="-19" rx="12" ry="23" fill="var(--petal-light)" transform="rotate(90)"/>
+                        <ellipse cy="-19" rx="12" ry="23" fill="var(--petal)" transform="rotate(135)"/>
+                        <ellipse cy="-19" rx="12" ry="23" fill="var(--petal-light)" transform="rotate(180)"/>
+                        <ellipse cy="-19" rx="12" ry="23" fill="var(--petal)" transform="rotate(225)"/>
+                        <ellipse cy="-19" rx="12" ry="23" fill="var(--petal-light)" transform="rotate(270)"/>
+                        <ellipse cy="-19" rx="12" ry="23" fill="var(--petal)" transform="rotate(315)"/>
+                        <circle r="15" fill="var(--petal-dark)"/>
+                        <path d="M-8 0 Q-7 -10 2 -8 Q10 -3 3 4 Q-5 10 -6 2"
+                              fill="none" stroke="#fff4fa" stroke-width="2.5"/>
+                    </g>
+                </g>
+
+                <g id="tulip">
+                    <path d="M-24 5 Q-31 -17 -23 -35 L-10 -24
+                             L0 -44 L11 -24 L23 -35 Q31 -17 24 5
+                             Q13 22 0 22 Q-15 20 -24 5Z"
+                          fill="var(--petal)"
+                          stroke="#69405a" stroke-width="2"/>
+                    <path d="M0 18 Q-7 -5 0 -36 Q9 -7 0 18Z"
+                          fill="var(--petal-light)"/>
+                </g>
+
+                <g id="daisy">
+                    <g fill="#fffdf7" stroke="#69405a" stroke-width="1.5">
+                        <ellipse cy="-17" rx="7" ry="17"/>
+                        <ellipse cy="-17" rx="7" ry="17" transform="rotate(45)"/>
+                        <ellipse cy="-17" rx="7" ry="17" transform="rotate(90)"/>
+                        <ellipse cy="-17" rx="7" ry="17" transform="rotate(135)"/>
+                        <ellipse cy="-17" rx="7" ry="17" transform="rotate(180)"/>
+                        <ellipse cy="-17" rx="7" ry="17" transform="rotate(225)"/>
+                        <ellipse cy="-17" rx="7" ry="17" transform="rotate(270)"/>
+                        <ellipse cy="-17" rx="7" ry="17" transform="rotate(315)"/>
+                    </g>
+                    <circle r="10" fill="#ffcf65" stroke="#69405a" stroke-width="1.5"/>
+                </g>
+
+                <g id="leaf">
+                    <path d="M0 0 Q-29 -7 -29 -36 Q-5 -32 0 0Z"
+                          fill="#65a86a" stroke="#315a3c" stroke-width="1.5"/>
+                    <path d="M0 0 L-25 -30" fill="none" stroke="#315a3c" stroke-width="1.2"/>
+                </g>
+            </defs>
+
+            <!-- Green stems -->
+            <g fill="none" stroke="#438456" stroke-width="4"
+               stroke-linecap="round">
+                <path d="M200 365 Q120 230 65 120"/>
+                <path d="M200 365 Q155 200 140 85"/>
+                <path d="M200 365 L200 65"/>
+                <path d="M200 365 Q250 200 260 85"/>
+                <path d="M200 365 Q300 230 335 135"/>
+                <path d="M200 365 Q100 280 95 220"/>
+                <path d="M200 365 Q300 280 310 220"/>
+            </g>
+
+            <!-- Leaves -->
+            <use href="#leaf" transform="translate(135 260) rotate(-45)"/>
+            <use href="#leaf" transform="translate(245 260) rotate(130)"/>
+            <use href="#leaf" transform="translate(155 300) rotate(-55) scale(1.2)"/>
+            <use href="#leaf" transform="translate(250 310) rotate(135) scale(1.2)"/>
+            <use href="#leaf" transform="translate(105 220) rotate(-30)"/>
+            <use href="#leaf" transform="translate(295 220) rotate(135)"/>
+
+            <!-- Main roses -->
+            <use href="#rose" transform="translate(65 120) scale(1.15)"/>
+            <use href="#rose" transform="translate(140 85) scale(1.2)"/>
+            <use href="#rose" transform="translate(200 65) scale(1.3)"/>
+            <use href="#rose" transform="translate(260 85) scale(1.2)"/>
+            <use href="#rose" transform="translate(335 135) scale(1.15)"/>
+            <use href="#rose" transform="translate(95 220) scale(1.05)"/>
+            <use href="#rose" transform="translate(310 220) scale(1.05)"/>
+
+            <!-- Tulips -->
+            <use href="#tulip" transform="translate(100 145) rotate(-18)"/>
+            <use href="#tulip" transform="translate(300 145) rotate(18)"/>
+            <use href="#tulip" transform="translate(160 175)"/>
+            <use href="#tulip" transform="translate(240 175)"/>
+
+            <!-- Little daisies -->
+            <use href="#daisy" transform="translate(40 175) scale(.75)"/>
+            <use href="#daisy" transform="translate(365 185) scale(.75)"/>
+            <use href="#daisy" transform="translate(125 48) scale(.65)"/>
+            <use href="#daisy" transform="translate(280 45) scale(.65)"/>
+
+            <!-- Bouquet wrapping -->
+            <path d="M75 235 L200 315 L325 235 L285 370
+                     L200 400 L115 370Z"
+                  fill="var(--wrap)" stroke="#69405a" stroke-width="3"/>
+
+            <path d="M75 235 L170 315 L115 370 L92 285Z"
+                  fill="var(--wrap-light)" stroke="#69405a" stroke-width="2"/>
+
+            <path d="M325 235 L230 315 L285 370 L308 285Z"
+                  fill="var(--petal)" stroke="#69405a" stroke-width="2"/>
+
+            <!-- Big ribbon -->
+            <path d="M200 320
+                     C165 280 115 290 140 330
+                     L185 340 L200 328
+                     L215 340 L260 330
+                     C285 290 235 280 200 320Z"
+                  fill="var(--ribbon)" stroke="#69405a" stroke-width="3"/>
+
+            <path d="M190 330 L160 370 L190 360 L200 335Z"
+                  fill="var(--petal-dark)" stroke="#69405a" stroke-width="2"/>
+
+            <path d="M210 330 L240 370 L210 360 L200 335Z"
+                  fill="var(--petal-light)" stroke="#69405a" stroke-width="2"/>
+
+            <circle cx="200" cy="325" r="12"
+                    fill="var(--ribbon)" stroke="#69405a" stroke-width="2"/>
+
+            <!-- Stems below the wrapping -->
+            <g stroke="#438456" stroke-width="4" stroke-linecap="round">
+                <path d="M185 390 L170 425"/>
+                <path d="M195 395 L190 430"/>
+                <path d="M205 395 L210 430"/>
+                <path d="M215 390 L230 425"/>
+            </g>
+        </svg>
+
+        <div class="bouquet-message-card">
+            <p id="bouquetMessage"></p>
+            <p class="bouquet-signature">Made with love, just for you. ♡</p>
+        </div>
+    </div>
+</div>
+
+        <section id="letter" class="section">
+            <p class="eyebrow">A FEW WORDS FROM ME</p>
+            <h2>A Little Letter for You 💌</h2>
+            <div class="letter-paper">
+                <p>Hey you, Ash and K,</p>
+                <p>
+                   I made this little place to keep the memories and feelings I might not always know how to say out loud. I want this to be a small reminder of how much I treasure you both and how grateful I am that our paths crossed.
+                </p>
+                <p>It's crazy to think that we only met at work, not knowing that one day, we would become this close. Look at us now, from being coworkers to sharing random pictures, endless laughter, little adventures, heartfelt conversations, and even the most vulnerable parts of ourselves. Who would have thought that people we simply met at work would become people we would never want to lose? Somehow, along the way, we became almost inseparable, and I'm genuinely happy that we did.</p>
+                <p>Thank you for trusting me with your thoughts, your feelings, and the parts of yourselves you don't always show everyone. Thank you for making ordinary days feel special and for giving me a friendship where we can be silly one moment and share the deepest things in our hearts the next. I hope we always remember that we don't have to pretend to be okay around each other. We can keep growing, learning, and figuring life out together.</p>
+                <p>I love you both, and I genuinely hope we continue dreaming of the wonderful future we want for ourselves. I hope we get to witness each other's growth, celebrate our achievements, and support one another through the difficult days. Life may take us in different directions someday, but I hope we never become strangers to the people we are today.</p>
+                <p>Whenever you visit this little page, I hope these memories remind you how loved and appreciated you are. From the smallest moments to the conversations that meant the world to us, I will always be grateful for them.</p>
+                <p>Here's to more memories, more dreams, and more years of friendship. I hope that someday, we'll look back at all of this, smile at how far we've come, and be proud that we got to share a little part of our lives with each other.</p>
+                <p>I love you, Ash and K. I'm so glad we met, and I'll always treasure what we have. Let's keep dreaming of a beautiful future together. ♡</p>
+                <p class="signature">With lots of love, always ♡</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Made with love and a little bit of magic ♡
+    </footer>
+
+    <audio id="backgroundMusic" loop preload="none">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="memoryViewer" class="memory-viewer hidden" role="dialog" aria-modal="true" aria-label="Expanded memory photo">
+        <button class="memory-close" type="button" aria-label="Close image">&times;</button>
+        <img id="expandedMemory" src="" alt="Expanded memory">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
